@@ -17,13 +17,15 @@ concurrency:
 jobs:
   upload:
     runs-on: ubuntu-latest
+    outputs:
+      artifact_name: github-pages-${{ github.run_attempt }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/configure-pages@v6
       - name: Upload site
         uses: actions/upload-pages-artifact@v5
         with:
-          name: github-pages
+          name: github-pages-${{ github.run_attempt }}
           path: dist
 
   deploy:
@@ -36,4 +38,4 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v5
         with:
-          artifact_name: github-pages
+          artifact_name: ${{ needs.upload.outputs.artifact_name }}
