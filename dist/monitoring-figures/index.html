@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demethanizer monitoring figures</title>
+  <link rel="stylesheet" href="../demethanizer/fonts.css">
+  <link rel="stylesheet" href="../analytics-figures/site.css">
+  <link rel="stylesheet" href="figures.css">
+  <script src="../assets/embed-appearance.js"></script>
+  <script src="../analytics-figures/plotly.min.js" defer></script>
+  <script src="monitor-data.js" defer></script>
+  <script src="figures.js" defer></script>
+</head>
+<body>
+  <p id="error" role="alert" hidden></p>
+  <main class="monitor-figures">
+    <section><h2>Fault Chart</h2><div id="fault" class="monitor-plot" aria-label="Fault run monitoring score on a logarithmic scale"></div></section>
+    <section><h2>3D PCA Projection</h2><div id="embedding" class="monitor-plot" aria-label="Rotatable projection of baseline and fault run points"></div></section>
+  </main>
+</body>
+</html>

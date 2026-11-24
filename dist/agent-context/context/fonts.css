@@ -1,0 +1,5 @@
+/* Self-hosted fonts; licenses are included in static/fonts. */
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/space-grotesk.ttf') format('truetype')}
+@font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/space-mono-regular.ttf') format('truetype')}
+@font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/space-mono-bold.ttf') format('truetype')}
+:root{--font-ui:'Space Grotesk','Segoe UI',sans-serif;--font-mono:'Space Mono',Consolas,monospace}

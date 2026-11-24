@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-appearance="classic">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Investigation context | Unit Navigator</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="agent-report.css">
+</head>
+<body>
+<main id="report"></main>
+
+<template id="supervisor">
+  <article>
+    <header>
+      <p class="role">Supervisor</p>
+      <h1>Investigation brief</h1>
+      <p>Explain the sustained feed-flow deviation in the recorded demethanizer run. Establish when it began, what the control loop did in response, and what evidence can confirm the cause.</p>
+    </header>
+    <h2>Specialist assignments</h2>
+    <dl>
+      <dt>Data Analyst</dt>
+      <dd>Use the 384 recorded samples to compare feed flow, setpoint, and controller command before activation and across the final 20 samples.</dd>
+      <dt>ML Analyst</dt>
+      <dd>Compare the run with the normal PCA reference to locate the first sustained departure. Use SHAP to identify which features help distinguish the recorded clusters.</dd>
+      <dt>Fault Historian</dt>
+      <dd>Review prior unit issues for similar symptoms, then compare the likely matches with the recorded simulator event.</dd>
+      <dt>Process Expert</dt>
+      <dd>Use the unit knowledge graph to trace the feed path and the relationship between VLV-100 and FIC-100.</dd>
+    </dl>
+    <aside><strong>Final review</strong><p>Reconcile the specialist findings and identify which evidence establishes the cause. Record the limits of the available measurements.</p></aside>
+  </article>
+</template>
+
+<template id="fault">
+  <article>
+    <header>
+      <p class="role">Fault Historian</p>
+      <h1>Demethanizer issue history</h1>
+      <p>Mock maintenance records for the demo unit. Each entry describes what operators noticed and what the team found.</p>
+    </header>
+
+    <section class="history-entry">
+      <p class="record-state">Resolved</p>
+      <h2>Feed control valve actuator failure</h2>
+      <p>Feed flow climbed above target while FIC-100 reduced its output. The mock maintenance record attributes the mismatch to a VLV-100 actuator failure that left the valve open. The team recorded a successful stroke test after replacing the actuator.</p>
+    </section>
+
+    <section class="history-entry">
+      <p class="record-state">Resolved</p>
+      <h2>Temperature indication drift</h2>
+      <p>The TIC-100 temperature reading drifted upward while neighboring measurements stayed steady. A calibration check found a positive bias in the temperature transmitter. The readings agreed again after recalibration.</p>
+    </section>
+
+    <section class="history-entry">
+      <p class="record-state">Open ? Under review</p>
+      <h2>Declining feed exchanger performance</h2>
+      <p>The E-101 outlet ran warmer than usual during comparable feed conditions. Maintenance flagged possible exchanger fouling for the next inspection. The cause is still unconfirmed.</p>
+    </section>
+  </article>
+</template>
+
+<template id="diagnosis">
+  <article>
+    <header>
+      <p class="role">Fault Diagnoser</p>
+      <h1>VLV-100 actuator failed open</h1>
+      <p>The simulator event and its readbacks confirm a fail-open actuator fault. Feed flow rose as FIC-100 reduced its output command, with the flow setpoint unchanged.</p>
+    </header>
+    <h2>Process response</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Signal</th><th scope="col">Before activation</th><th scope="col">Final 20 samples</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Feed flow, kmol/h</th><td>4,981.2</td><td>5,092.6</td></tr>
+          <tr><th scope="row">FIC-100 output command</th><td>53.73%</td><td>20.02%</td></tr>
+          <tr><th scope="row">Flow setpoint, HYSYS native units</th><td>1.38333</td><td>1.38333</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>Detection and confirmation</h2>
+    <p>Hotelling T&sup2; crossed the normal-reference limit of 9.57 at 256.43 s, shortly after the fault activated at 256.40 s. The crossing locates the deviation. The simulator readbacks establish the cause in this replay.</p>
+    <aside><strong>Measurement limit</strong><p>FIC-100 output is a controller command. The recording contains no independent valve position feedback.</p></aside>
+  </article>
+</template>
+<script>
+  const params = new URLSearchParams(location.search);
+  const appearance = params.get('appearance');
+  if (['classic', 'white', 'black-orbit', 'bayou'].includes(appearance)) {
+    document.documentElement.dataset.appearance = appearance;
+  }
+  const report = document.getElementById(params.get('agent'));
+  if (report instanceof HTMLTemplateElement) {
+    document.getElementById('report').append(report.content.cloneNode(true));
+    document.title = document.querySelector('h1').textContent + ' | Unit Navigator';
+  }
+</script>
+</body>
+</html>

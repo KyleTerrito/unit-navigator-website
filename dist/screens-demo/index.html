@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-appearance="classic">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demethanizer | Screens and Dashboards</title>
+<link rel="stylesheet" href="../demethanizer/fonts.css">
+<link rel="stylesheet" href="demo.css">
+<script src="../assets/embed-appearance.js"></script>
+<script src="konva.min.js" defer></script>
+<script src="dcs-routing.js" defer></script>
+<script src="dcs-calculations.js" defer></script>
+<script src="replay-data.js" defer></script>
+<script src="screen-renderer.js" defer></script>
+<script src="../assets/demo-pan.js" defer></script>
+<script src="demo.js" defer></script>
+</head>
+<body>
+<main>
+  <header><div><p class="subtitle">HYSYS Demethanizer</p><h1>Screens and Dashboards</h1></div><span class="badge">Simulation replay</span></header>
+  <div class="replay">
+    <div class="play-controls">
+      <button id="play" type="button" disabled>Pause</button>
+      <button id="restart" type="button" disabled>Restart</button>
+      <label>Speed <select id="speed"><option value="1">1×</option><option value="6">6×</option><option value="15" selected>15×</option><option value="30">30×</option></select></label>
+    </div>
+    <label class="seek">Replay timeline <input id="seek" type="range" min="0" value="0" step="any" disabled></label>
+    <output id="clock" for="seek"></output>
+  </div>
+  <p id="phase" class="phase"></p>
+  <p id="dcsError" role="alert" hidden></p>
+  <section class="surface" id="operatorScreen" aria-labelledby="screen-title">
+    <div class="section-heading"><h2 id="screen-title">demethanizer-demo</h2><div class="zoom-controls">
+      <button id="zoomOut" type="button" aria-label="Zoom out">−</button><span id="dcsZoom"></span>
+      <button id="zoomIn" type="button" aria-label="Zoom in">+</button><button id="fit" type="button">Reset zoom</button>
+    </div></div>
+    <div id="dcsCanvas" role="img" aria-label="Demethanizer operating screen. Drag to pan or use the zoom controls."></div>
+    <p id="readout">Select a symbol or stream to inspect it. A dash indicates an unrecorded value.</p>
+  </section>
+  <section class="dashboard" id="trendDashboard" aria-labelledby="dashboard-title">
+    <h2 id="dashboard-title">Control Loops Monitoring Dashboard</h2>
+    <div id="dashboardGrid"></div>
+  </section>
+  <noscript>Enable JavaScript to run the replay.</noscript>
+</main>
+</body>
+</html>

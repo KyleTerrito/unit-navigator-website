@@ -1,0 +1,16 @@
+[data-view="embedded"] .monitor-figures,
+.monitor-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+  width: auto;
+  height: auto;
+  margin: .5rem;
+}
+.monitor-figures section { padding: .55rem; }
+.monitor-figures h2 { margin: 0 0 .35rem; }
+.monitor-plot { min-width: 0; height: max(230px, calc(100dvh - 3.25rem)); }
+@media (max-width: 640px) {
+  [data-view="embedded"] .monitor-figures, .monitor-figures { grid-template-columns: 1fr; }
+  .monitor-plot { height: 250px; }
+}

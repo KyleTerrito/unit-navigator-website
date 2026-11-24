@@ -1,0 +1,24 @@
+
+:root { font-family: var(--font-ui); color: #e9ebed; background: #111315; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); height: 100dvh; }
+#wikiGraph { min-width: 0; min-height: 0; background: #111a20; }
+#wikiUnitPanel { overflow: auto; min-height: 0; border-radius: 0; container-type: inline-size; }
+#wikiUnitPanel > h2 { margin: 0; }
+#unitWikiPages button {
+  font: 550 14px var(--font-ui); cursor: pointer; color: #d7dde2;
+  background: #222629; border: 1px solid #41484f; border-radius: 5px; padding: 10px 12px;
+}
+#unitWikiPages button[aria-current=true] { background: #234b46; border-color: #65b6a4; color: #b6f1e3; }
+.graph-link { color: #91d8c7; font-size: 14px; text-underline-offset: .2em; }
+.wiki-entry-heading.is-selected { color: #b6f1e3; border-left: 3px solid #65b6a4; padding-left: .5rem; }
+@container (max-width: 560px) {
+  .unit-wiki-layout { grid-template-columns: minmax(0, 1fr); }
+  .unit-wiki-sidebar { border-right: 0; border-bottom: 1px solid #34434d; padding: 0 0 12px; }
+  .unit-wiki-sidebar nav { display: flex; flex-wrap: wrap; }
+  .unit-wiki-sidebar button { width: auto; }
+}
+@media(max-width: 700px) {
+  main { grid-template-columns: 1fr; grid-template-rows: 44% 56%; }
+}

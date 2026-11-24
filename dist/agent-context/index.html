@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demethanizer Workspace Chat | Unit Navigator</title>
+<link rel="stylesheet" href="simulation/fonts.css">
+<link rel="stylesheet" href="site.css">
+<script src="../assets/embed-appearance.js"></script>
+<script src="chat.js" defer></script>
+</head>
+<body>
+<header><div><h1>Demethanizer workspace</h1><p>HYSYS simulation replay</p></div>
+<nav aria-label="Workspace views">
+<button type="button" data-view="screen" aria-current="true">Operating screen</button>
+<button type="button" data-view="dashboard">Dashboard</button>
+<button type="button" data-view="context">Graph &amp; wiki</button>
+</nav></header>
+<main>
+<section id="workspace" aria-label="Process context">
+<iframe id="simulation" title="Demethanizer operating screen and dashboard" data-src="simulation/index.html?view=chat-context" hidden></iframe>
+<iframe id="context" title="Demethanizer knowledge graph and unit wiki" data-src="context/index.html" hidden></iframe>
+</section>
+<aside aria-labelledby="chat-title">
+<div class="chat-heading"><h2 id="chat-title">Workspace chat</h2><span>Scripted demo</span></div>
+<p id="scope">Context · Operating screen</p>
+<div id="log" role="log" aria-label="Chat messages" tabindex="0"></div>
+<div class="prompts" aria-label="Try these questions">
+<button type="button" data-question="What does XIC-100 control?">What does XIC-100 control?</button>
+<button type="button" data-question="What happened when its setpoint changed?">What happened when its setpoint changed?</button>
+<button type="button" data-question="Where does that duty enter the process?">Where does that duty enter the process?</button>
+</div>
+<form id="chat"><input id="question" placeholder="Ask about this workspace" aria-label="Your question" maxlength="350" required><button type="submit">Send</button></form>
+</aside>
+</main>
+</body>
+</html>

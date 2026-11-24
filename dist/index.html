@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Unit Navigator brings process data, operating knowledge, analytics, and operator tools together in one workspace.">
+  <title>Unit Navigator</title>
+  <link rel="icon" href="assets/navigator-logo-7.png" type="image/png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/appearance.css">
+  <script src="assets/appearance.js"></script>
+  <script src="assets/agent-tabs.js" defer></script>
+  <script src="assets/motion.js" defer></script>
+  <script src="assets/source-ticker.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#about">Skip to content</a>
+  <div class="drafting-grid" aria-hidden="true"><canvas class="signal"></canvas></div>
+  <div id="orbitalBackdrop" aria-hidden="true"><span class="orbital-orb orbital-orb-teal"></span><span class="orbital-orb orbital-orb-blue"></span><span class="orbital-orb orbital-orb-bottom"></span></div>
+<div id="blackOrbitBackdrop" aria-hidden="true"></div>
+  <header class="bar">
+    <a class="brand" href="#about" aria-label="Unit Navigator">
+      <span class="brand-mark"><img src="assets/navigator-logo-7.png" alt=""></span>
+    </a>
+    <nav class="section-nav" aria-label="Sections">
+      <a href="#about">Overview</a>
+      <a href="#connection" aria-label="Data Connection"><span class="nav-full">Data Connection</span><span class="nav-short" aria-hidden="true">Data</span></a>
+      <a href="#workspaces" aria-label="Workspaces"><span class="nav-full">Workspaces</span><span class="nav-short" aria-hidden="true">Spaces</span></a>
+      <a href="#process-knowledge" aria-label="Process Knowledge"><span class="nav-full">Process Knowledge</span><span class="nav-short" aria-hidden="true">Wiki</span></a>
+      <a href="#analytics">Analytics</a>
+      <a href="#monitoring">Monitoring</a>
+      <a href="#screens-dashboards" aria-label="Screens and Dashboards"><span class="nav-full">Screens &amp; Dashboards</span><span class="nav-short" aria-hidden="true">Screens</span></a>
+      <a href="#diagnosis">AI Agents</a>
+      <span class="track" aria-hidden="true"></span>
+    </nav>
+    <div class="header-actions">
+      <span class="try-action">
+        <button class="try-button" type="button" aria-disabled="true" aria-describedby="try-tooltip">Try Now</button>
+        <span class="try-tooltip" id="try-tooltip" role="tooltip">Not implemented yet</span>
+      </span>
+      <button id="appearanceButton" type="button" aria-label="Change appearance" title="Change appearance" aria-haspopup="dialog" aria-controls="appearanceDialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18h1.5a1.5 1.5 0 0 0 1-2.6 1.3 1.3 0 0 1 .9-2.2H17a4 4 0 0 0 4-4 9 9 0 0 0-9-9Z"/><path d="M7.5 12h.01M9 7.5h.01M14 7h.01M17.5 10h.01"/></svg></button>
+    </div>
+  </header>
+  <main class="stage">
+    <div class="camera">
+      <section class="scene about" id="about" aria-labelledby="about-title">
+        <div class="scene-overview">
+          <div class="composition landing">
+            <figure class="product-mark">
+              <div class="product-logo-window">
+                <svg class="product-logo-dark" viewBox="0 0 2020 779" role="img" aria-labelledby="dark-logo-title">
+                  <title id="dark-logo-title">Unit Navigator, Agentic Process Control</title>
+                  <defs>
+                    <image id="original-logo-art" href="assets/navigator-logo-2.png" width="2020" height="779"></image>
+                    <clipPath id="logo-illustration"><path d="M0 0H2020V456H0Z"></path></clipPath>
+                    <clipPath id="logo-white-lettering">
+                      <path d="M0 456H815L768 625H0Z M910 456H1105L1035 625H985Z M0 642H2020V715H0Z"></path>
+                    </clipPath>
+                    <clipPath id="logo-color-lettering">
+                      <path clip-rule="evenodd" d="M0 456H2020V642H0Z M0 456H815L768 625H0Z M910 456H1105L1035 625H985Z"></path>
+                    </clipPath>
+                    <filter id="logo-remove-paper" color-interpolation-filters="sRGB">
+                      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -1.4 0 0 0 1.17" result="ink"></feColorMatrix>
+                      <feComposite in="SourceGraphic" in2="ink" operator="in"></feComposite>
+                    </filter>
+                    <filter id="logo-white-ink" color-interpolation-filters="sRGB">
+                      <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -1.4 0 0 0 1.17"></feColorMatrix>
+                    </filter>
+                  </defs>
+                  <image href="assets/navigator-logo-2-dark.png" width="2020" height="779" clip-path="url(#logo-illustration)"></image>
+                  <g clip-path="url(#logo-color-lettering)"><use href="#original-logo-art" filter="url(#logo-remove-paper)"></use></g>
+                  <g clip-path="url(#logo-white-lettering)"><use href="#original-logo-art" filter="url(#logo-white-ink)"></use></g>
+                </svg>
+                <img class="product-logo-light" src="assets/navigator-logo-2.png" alt="Unit Navigator, Agentic Process Control" loading="lazy">
+                <svg class="logo-pulse" viewBox="0 0 2020 779" aria-hidden="true" focusable="false">
+                  <defs>
+                    <path id="logo-circuit-route" pathLength="1" d="M162 440Q222 391 290 361L356 338 432 284 463 281 536 277 595 209 688 195 730 179 767 156 826 161 889 207 961 282 1035 377Q1090 440 1166 440"></path>
+                    <filter id="logo-pulse-glow" x="-15%" y="-25%" width="130%" height="150%">
+                      <feGaussianBlur stdDeviation="9"></feGaussianBlur>
+                    </filter>
+                  </defs>
+                  <use class="logo-pulse-glow" href="#logo-circuit-route"></use>
+                  <use class="logo-pulse-core" href="#logo-circuit-route"></use>
+                </svg>
+              </div>
+              <figcaption>By Bayou Controls</figcaption>
+            </figure>
+            <div class="landing-copy">
+              <h1 id="about-title" tabindex="-1">The next generation of process control</h1>
+              <p class="intro">Capture operating knowledge, uncover insights in live and historical data, and give your team a shared workspace for process screens, dashboards, and monitoring.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="scene connection" id="connection" aria-labelledby="connection-title">
+        <div class="scene-overview">
+          <div class="composition">
+            <div class="scene-copy">
+              <h2 id="connection-title">Connecting to your data</h2>
+              <p class="intro">Bring live measurements, historical records, and calculated signals into one workspace from the systems you already use. Each connection starts with a read interface your source exposes, such as an OPC UA endpoint, a REST API, a SQL view, or a file export.</p>
+              <div class="read-only-note">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4m-4 4v2"/></svg>
+                <div>
+                  <strong>Read-only access</strong>
+                  <p>Unit Navigator reads the data you select. Write access to your systems stays disabled for data connections.</p>
+                </div>
+              </div>
+            </div>
+            <div class="source-examples">
+              <h3 id="data-source-catalog">Common industrial data sources</h3>
+              <ul id="data-source-strip" tabindex="0" aria-labelledby="data-source-catalog">
+                <li class="source-tested" aria-describedby="source-tested-note">
+                  <div class="source-mark"><img src="assets/aspentech.svg" alt="AspenTech"></div>
+                  <div><strong>Process simulators <small aria-hidden="true">*</small></strong><span>Aspen HYSYS simulation tags and results</span></div>
+                </li>
+                <li>
+                  <div class="source-mark source-mark-inverse"><img src="assets/ignition.png" alt=""></div>
+                  <div><strong>SCADA &amp; controls</strong><span>Ignition tags via OPC UA, including PLC or DCS signals exposed by a gateway</span></div>
+                </li>
+                <li>
+                  <div class="source-mark"><img src="assets/aveva.svg" alt=""></div>
+                  <div><strong>Plant historians</strong><span>AVEVA PI time series and events via PI Web API</span></div>
+                </li>
+                <li>
+                  <div class="source-mark"><img src="assets/seeq.png" alt=""></div>
+                  <div><strong>Analytics platforms</strong><span>Seeq signals and calculations via its API</span></div>
+                </li>
+                <li>
+                  <div class="source-mark"><img src="assets/postgresql.png" alt=""></div>
+                  <div><strong>SQL databases</strong><span>Timestamped measurements and production records from a SQL Server or PostgreSQL table or view</span></div>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-14-2 16"/></svg>
+                  <div><strong>APIs &amp; exports</strong><span>Internal REST endpoints and timestamped CSV files</span></div>
+                </li>
+              </ul>
+              <p class="source-note" id="source-tested-note"><span aria-hidden="true">*</span> Aspen HYSYS is the only data connection tested so far.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="scene" id="workspaces" aria-labelledby="workspaces-title">
+        <div class="scene-overview">
+          <div class="composition embedded-layout">
+            <div class="scene-copy">
+              <h2 id="workspaces-title">Configuring your workspace</h2>
+              <p class="intro">Create a workspace for a plant, unit, or project. Then use Tag Explorer to choose which process tags become variables for screens, analytics, and monitoring.</p>
+            </div>
+            <iframe class="embedded-frame" data-sync-appearance data-sync-visibility src="tag-explorer/index.html?view=embedded" title="Interactive workspace and Tag Explorer demo" loading="lazy"></iframe>
+          </div>
+        </div>
+      </section>
+      <section class="scene process-knowledge" id="process-knowledge" aria-labelledby="process-knowledge-title">
+        <div class="scene-overview">
+          <div class="composition embedded-layout">
+            <div class="scene-copy">
+              <h2 id="process-knowledge-title">Capturing process knowledge</h2>
+              <p class="intro">Build knowledge graphs that connect equipment, streams, and control loops. Embed process context such as operating procedures, design documents, and engineering notes alongside the data they explain.</p>
+            </div>
+            <iframe class="embedded-frame" data-sync-appearance data-sync-visibility src="demethanizer/index.html?view=embedded" title="Interactive demethanizer graph and Unit Wiki" loading="lazy"></iframe>
+          </div>
+        </div>
+      </section>
+      <section class="scene analytics" id="analytics" aria-labelledby="analytics-title">
+        <div class="scene-overview">
+          <div class="composition analytics-layout">
+            <div class="scene-copy">
+              <h2 id="analytics-title">Viewing FastMAN<sup>&copy;</sup> Analytics</h2>
+              <p class="intro">Find patterns in your process data. FastMAN uses dimensionality reduction and clustering to reveal distinct operating regimes and show which variables help distinguish them.</p>
+            </div>
+            <iframe class="analytics-frame" data-sync-appearance data-sync-visibility src="analytics-figures/index.html?view=embedded" title="Interactive FastMAN analytics figures" loading="lazy"></iframe>
+          </div>
+        </div>
+      </section>
+      <section class="scene monitoring" id="monitoring" aria-labelledby="monitoring-title">
+        <div class="scene-overview">
+          <div class="composition embedded-layout">
+            <div class="scene-copy">
+              <h2 id="monitoring-title">Train models to monitor your process</h2>
+              <p class="intro">Use historical data classified with FastMAN Analytics to train monitoring models. This example uses PCA. AKNN and WarpMAP are coming soon.</p>
+            </div>
+            <iframe class="embedded-frame" data-sync-appearance data-sync-visibility src="monitoring-figures/index.html?view=embedded" title="Fault Chart and 3D PCA Projection" loading="lazy"></iframe>
+          </div>
+        </div>
+      </section>
+      <section class="scene screens-showcase" id="screens-dashboards" aria-labelledby="screens-dashboards-title">
+        <div class="scene-overview">
+          <iframe class="screens-frame" data-sync-appearance data-sync-visibility src="screens-demo/index.html?view=embedded" title="Interactive demethanizer operator screen with recorded readings" loading="lazy"></iframe>
+          <div class="screens-copy">
+            <h2 id="screens-dashboards-title">Creating sharable screens and dashboards</h2>
+            <p class="intro">Connect operator screens and dashboards to your live process data. See readings alongside equipment on the process diagram, and track critical variables and monitoring results in your dashboards.</p>
+          </div>
+        </div>
+      </section>
+      <section class="scene" id="diagnosis" aria-labelledby="diagnosis-title">
+        <div class="scene-overview">
+          <div class="composition embedded-layout agent-layout">
+            <div class="scene-copy">
+              <h2 id="diagnosis-title">Connect AI agents to your unit</h2>
+              <p class="intro">Ask questions about your process and investigate faults with AI agents. Your team manages the language model (LLM) configuration on your side, so you can apply your own policies for where unit data is processed and how it is handled.</p>
+            </div>
+            <div class="agent-demos">
+              <div class="agent-tabs" role="tablist" aria-label="AI agent demos">
+                <button id="agent-context-tab" type="button" role="tab" aria-selected="true" aria-controls="agent-context-panel">Integrated chatbot</button>
+                <button id="agent-fault-tab" type="button" role="tab" aria-selected="false" aria-controls="agent-fault-panel" tabindex="-1">Fault diagnosis framework</button>
+              </div>
+              <div id="agent-context-panel" role="tabpanel" aria-labelledby="agent-context-tab">
+                <iframe class="embedded-frame" data-sync-appearance src="agent-context/index.html?view=embedded" title="Scripted demethanizer workspace chat with linked process context" loading="lazy"></iframe>
+              </div>
+              <div id="agent-fault-panel" role="tabpanel" aria-labelledby="agent-fault-tab" hidden>
+                <iframe class="embedded-frame" data-sync-appearance data-src="agent-fault-demo/index.html?view=embedded" title="Agent control room for the recorded demethanizer valve fault"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+<dialog id="appearanceDialog" aria-labelledby="appearanceTitle" aria-describedby="appearanceDescription">
+<div class="appearance-heading"><div><h2 id="appearanceTitle">Appearance</h2><p id="appearanceDescription">Choose your workspace backdrop. Changes apply immediately and are saved in this browser.</p></div><button id="appearanceClose" type="button" aria-label="Close appearance" data-ui-action=""><span aria-hidden="true">&times;</span></button></div>
+<fieldset class="appearance-options"><legend>Workspace appearance</legend>
+<label class="appearance-option"><div class="appearance-preview" aria-hidden="true"></div><span><input type="radio" name="appearance" value="classic" checked>Legacy</span><small>The original dark workspace.</small></label>
+<label class="appearance-option"><div class="appearance-preview appearance-preview-white" aria-hidden="true"></div><span><input type="radio" name="appearance" value="white">Professional</span><small>Bright surfaces, clear contrast, and a clean backdrop.</small></label>
+<label class="appearance-option"><div class="appearance-preview appearance-preview-black" aria-hidden="true"></div><span><input type="radio" name="appearance" value="black-orbit">Orbital</span><small>Deep black with a lively field of white orbs.</small></label>
+<label class="appearance-option"><div class="appearance-preview appearance-preview-bayou" aria-hidden="true"></div><span><input type="radio" name="appearance" value="bayou">Bayou</span><small>Logo-inspired blues, emerald greens, and lime accents.</small></label>
+</fieldset>
+<label class="appearance-motion"><input id="appearanceMotion" type="checkbox" checked>Animate the background</label>
+<p class="appearance-note">System reduced-motion preferences are respected. Charts and process canvases keep stable backgrounds.</p>
+<p id="appearanceStatus" role="status" aria-live="polite"></p>
+</dialog>
+</body>
+</html>

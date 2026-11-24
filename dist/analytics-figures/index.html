@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data 6-16 Reduced Analytics</title>
+<link rel="stylesheet" href="../demethanizer/fonts.css">
+<link rel="stylesheet" href="site.css">
+<script src="../assets/embed-appearance.js"></script>
+<script src="plotly.min.js" defer></script>
+<script src="analytics-chart-specs.js" defer></script>
+<script src="run-data.js" defer></script>
+<script src="plots.js" defer></script>
+<script src="ticker.js" defer></script>
+</head>
+<body>
+<main>
+<header>
+  <h1>Data 6-16 Reduced</h1>
+  <p id="summary"></p>
+</header>
+<p id="error" role="alert" hidden></p>
+<div class="ticker-controls" hidden>
+  <button type="button" id="ticker-playback" aria-controls="ticker-window" aria-label="Pause chart scrolling" title="Pause chart scrolling"><span aria-hidden="true"></span></button>
+</div>
+<div class="ticker-window" id="ticker-window" aria-label="Analytics figures">
+<div class="plots">
+  <section><h2>PaCMAP and HDBSCAN</h2><div class="plot" id="embedding"></div><div class="toolbar"><span id="selection" role="status"></span><button id="clear" disabled>Clear selection</button></div></section>
+  <section><h2>Cluster counts</h2><div class="plot" id="clusters"></div></section>
+  <section>
+    <div class="plot-heading"><h2>Tag trend</h2><select id="feature" aria-label="Tag to plot"></select></div>
+    <div class="plot" id="trend"></div>
+  </section>
+  <section>
+    <div class="plot-heading"><h2>Self-organizing map</h2><select id="map-mode" aria-label="Map color">
+      <option value="distance">Neighbor distance</option><option value="cluster">Majority cluster</option><option value="hits">Observation count</option>
+    </select></div>
+    <div class="plot" id="som"></div>
+  </section>
+  <section class="wide">
+    <div class="plot-heading"><h2>SHAP feature contributions</h2><select id="shap-limit" aria-label="Features to show">
+      <option value="5">Top 5</option><option value="10">Top 10</option><option value="20">Top 20</option><option value="0">All features</option>
+    </select></div>
+    <p id="shap-notice" hidden></p>
+    <div id="shap"></div>
+  </section>
+</div>
+</div>
+</main>
+</body>
+</html>
+

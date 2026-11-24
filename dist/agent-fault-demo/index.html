@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Agent Diagnosis Demo | Unit Navigator</title><meta name="description" content="A process control room with six connected AI agents, a recorded HYSYS fault investigation, and viewable, downloadable outputs."><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="demo.css"><script src="../assets/embed-appearance.js"></script></head>
+<body>
+<main>
+<div id="roster" hidden></div>
+<section class="workspace" aria-label="Virtual process control"><div class="demo-grid"><div class="room-panel"><div class="scene" id="scene"><img src="assets/themes/classic/office.webp" alt="A process control room with six robots, a dedicated supervisor office, four specialist desks, and a final diagnosis office. Each workstation has a permanent chair." id="office-art"><div id="robots" aria-label="Robot agents"></div><div id="desks"></div></div></div><div class="agent-panel"><section id="agent-network" class="agent-network" aria-label="Agent connections"><div class="network-viewport" tabindex="0" aria-label="Agent graph"><div class="network-canvas"><svg id="network-edges" aria-hidden="true"></svg><div id="network-nodes"></div><span class="network-tier tier-supervisor">01 / ORCHESTRATION</span><span class="network-tier tier-specialists">02 / SPECIALISTS</span><span class="network-tier tier-diagnosis">03 / FINAL REVIEW</span><span class="network-route-label route-assignment">FINAL REVIEW ASSIGNMENT</span><span class="network-route-label route-return">DIAGNOSIS RETURN</span></div></div></section></div></div></section>
+</main>
+<dialog id="agent-input" aria-label="Agent input figure">
+  <button type="button" id="close-input" aria-label="Close input figure">&#215;</button>
+  <iframe id="input-frame" title="Agent input figure" src="about:blank"></iframe>
+</dialog>
+<script src="theme.js"></script><script src="app.js"></script>
+</body></html>

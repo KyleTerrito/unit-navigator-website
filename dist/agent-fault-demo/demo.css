@@ -1,0 +1,126 @@
+body { font-family: var(--font-ui); }
+main { display: block; min-height: 0; }
+.workspace { max-width: 1540px; padding: 0 0 2px; }
+.demo-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 12px; }
+.room-panel, .agent-panel { min-width: 0; }
+.room-panel .scene, .agent-panel .agent-network { margin: 0; }
+.agent-panel, .agent-panel .agent-network { display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); }
+.agent-panel .network-viewport { display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); overflow: hidden; }
+.agent-panel .network-canvas { width: 100%; min-width: 0; height: auto; min-height: 0; aspect-ratio: auto; }
+.agent-panel .network-node {
+  width: 29%;
+  height: auto;
+  min-height: 38px;
+  grid-template-columns: 18px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2px 5px;
+  padding: 4px 5px;
+}
+.agent-panel .network-node strong {
+  font-size: clamp(11px, 1.27vw, 14px);
+  line-height: 1.15;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.agent-panel .network-node small { font-size: 10px; line-height: 1.15; white-space: normal; }
+.agent-panel .network-node .node-orb { width: 18px; height: 18px; }
+.agent-panel .network-tier, .agent-panel .network-route-label { display: none; }
+.demo-chat { min-width: 0; background: #141e2b; border: 1px solid #34465a; border-radius: 12px; overflow: hidden; }
+.chat-heading { display: flex; justify-content: space-between; gap: 8px; align-items: center; padding: 11px 14px; border-bottom: 1px solid #34465a; }
+.chat-heading h3 { margin: 0; font-size: 16px; }
+.chat-heading span { color: #adc3d5; font-size: 11px; }
+#chat-log { padding: 12px; height: 210px; overflow: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 9px; }
+.chat-message { align-self: start; max-width: 94%; color: #e9f2f8; background: #23354a; border: 1px solid #38536c; border-radius: 9px; padding: 8px 10px; overflow-wrap: anywhere; }
+.chat-message.visitor { align-self: end; background: #19423f; border-color: #32625c; }
+.chat-message span { display: block; margin-bottom: 4px; font-size: 11px; color: #b8d2e6; }
+.chat-message p { margin: 0; font-size: 13px; line-height: 1.45; }
+.chat-prompts, #chat-form { display: flex; gap: 6px; padding: 0 12px 10px; }
+.chat-prompts { flex-wrap: wrap; }
+.chat-prompts button { border: 1px solid #3b536a; border-radius: 6px; background: transparent; color: #c8dbea; padding: 5px 8px; font: inherit; font-size: 11px; }
+#chat-input { min-width: 0; flex: 1; padding: 8px; background: #0d1723; border: 1px solid #415769; border-radius: 6px; color: #eff7fc; font: inherit; }
+#chat-form button { padding: 7px 12px; }
+@media (max-width: 800px) {
+  .demo-grid { grid-template-columns: minmax(0, 1fr); }
+  .agent-panel { aspect-ratio: 3 / 2; }
+}
+@media (max-width: 470px) {
+  .agent-panel .network-node { grid-template-columns: minmax(0, 1fr); padding-inline: 4px; }
+  .agent-panel .network-node .node-orb { display: none; }
+  .agent-panel .network-node small { gap: 4px; }
+}
+.context-links a { color:#aeeadc; text-decoration:underline; text-underline-offset:3px; }
+.chat-context-link { display:inline-block; margin-top:.4rem; padding:4px 6px; border:1px solid #5d7b91; border-radius:5px; background:#1b2e3f; color:#e2f6f2; cursor:pointer; font:inherit; font-size:11px; }
+.console .tabs { flex-wrap:wrap; }
+
+#agent-input {
+  width: min(900px, calc(100% - 24px));
+  height: min(540px, calc(100% - 24px));
+  padding: 0;
+  border: 1px solid #496176;
+  border-radius: 12px;
+  background: #14202b;
+  overflow: hidden;
+}
+#agent-input::backdrop { background: rgb(5 10 17 / 76%); }
+#input-frame { display: block; width: 100%; height: 100%; border: 0; }
+#close-input {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #638096;
+  border-radius: 6px;
+  background: #23354a;
+  color: #fff;
+  font: 22px/1 var(--font-ui);
+  cursor: pointer;
+}
+[data-appearance="white"] { color-scheme: light; }
+[data-appearance="white"] body { background: #f8fafc; color: #172c3c; }
+[data-appearance="white"] .room-panel .scene { border-color: #a7bac9; }
+[data-appearance="white"] .agent-network {
+  background: #edf4f8;
+  border-color: #a7bac9;
+}
+[data-appearance="white"] .network-canvas {
+  background-image: linear-gradient(#718da326 1px, transparent 1px),
+    linear-gradient(90deg, #718da326 1px, transparent 1px);
+}
+[data-appearance="white"] .agent-panel .network-node {
+  --agent-ink: color-mix(in srgb, var(--agent) 36%, #173c50);
+  background: #fff;
+  color: #192e3d;
+  border-color: #a6b9c7;
+  border-left-color: var(--agent-ink);
+  box-shadow: 0 2px 5px #20394d16;
+}
+[data-appearance="white"] .agent-panel .network-node::before,
+[data-appearance="white"] .agent-panel .network-node::after {
+  background: #fff;
+  border-color: var(--agent-ink);
+}
+[data-appearance="white"] .agent-panel .network-node:hover,
+[data-appearance="white"] .agent-panel .network-node.active {
+  background: #e3f1f7;
+  border-color: var(--agent-ink);
+}
+[data-appearance="white"] .agent-panel .network-node:focus-visible { outline: 2px solid #126657; }
+[data-appearance="white"] .network-node small { color: #405a6d; }
+[data-appearance="white"] .network-node .dot { background: #23745f; }
+[data-appearance="white"] .network-node .dot.idle { background: #607585; }
+[data-appearance="white"] .network-node .dot.called { background: #19678b; }
+[data-appearance="white"] .network-node :is(.dot.reviewing, .dot.blocked) { background: #926114; }
+[data-appearance="white"] .network-link { --edge-ink: color-mix(in srgb, var(--edge) 32%, #234759); }
+[data-appearance="white"] .network-link :is(.edge-base, .edge-flow) { stroke: var(--edge-ink); }
+[data-appearance="white"] .network-link:not(.active) .edge-base { opacity: .44; }
+[data-appearance="white"] #network-edges marker path { fill: color-mix(in srgb, var(--edge) 32%, #234759); }
+[data-appearance="white"] #agent-input { background: #fff; border-color: #a7bac9; }
+[data-appearance="white"] #close-input { background: #edf4f8; color: #193446; border-color: #8da7b8; }
+[data-appearance="white"] .agent-panel .network-node .node-orb {
+  background: #e5eef4;
+  border-color: #a6b9c7;
+}
+
+.agent-panel .network-link .edge-arrow { stroke: none; opacity: 1; }

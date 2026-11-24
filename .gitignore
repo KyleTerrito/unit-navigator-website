@@ -1,0 +1,30 @@
+# Local editor settings
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS and sync metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+~$*
+
+# Local configuration
+.env
+.env.*
+!.env.example
+
+# Temporary output and caches
+*.log
+*.tmp
+.cache/
+__pycache__/
+*.py[cod]
+node_modules/
+
+# Local reference assets and cleanup archives
+/assets/
+
+# Retired nested Git metadata
+/unit-navigator/
