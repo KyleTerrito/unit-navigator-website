@@ -34,7 +34,7 @@ Repository: [KyleTerrito/unit-navigator-website](https://github.com/KyleTerrito/
 
 Expected site URL after publishing: [kyleterrito.github.io/unit-navigator-website/](https://kyleterrito.github.io/unit-navigator-website/)
 
-In the repository's **Settings > Pages**, choose **GitHub Actions** as the source. Configure a Pages workflow to upload `dist/` as the site artifact and deploy it to the `github-pages` environment. The artifact should contain `index.html` at its root. The site is ready to serve without a build step. [GitHub Pages publishing documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+In the repository's **Settings > Pages**, choose **GitHub Actions** as the source. The [Pages workflow](.github/workflows/pages.yml) publishes `dist/` directly, with no build step. It runs on pushes to `main` and can also be started manually from the **Actions** tab. [GitHub Pages publishing documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
 ## Demo data
 
