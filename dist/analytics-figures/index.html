@@ -20,12 +20,14 @@
   <p id="summary"></p>
 </header>
 <p id="error" role="alert" hidden></p>
-<div class="ticker-controls" hidden>
-  <button type="button" id="ticker-playback" aria-controls="ticker-window" aria-label="Pause chart scrolling" title="Pause chart scrolling"><span aria-hidden="true"></span></button>
+<div class="ticker-controls">
+  <span id="selection" role="status"></span>
+  <button type="button" id="clear" disabled>Clear selection</button>
+  <button type="button" id="ticker-playback" aria-controls="ticker-window" aria-label="Pause chart scrolling" title="Pause chart scrolling" hidden><span aria-hidden="true"></span></button>
 </div>
 <div class="ticker-window" id="ticker-window" aria-label="Analytics figures">
 <div class="plots">
-  <section><h2>PaCMAP and HDBSCAN</h2><div class="plot" id="embedding"></div><div class="toolbar"><span id="selection" role="status"></span><button id="clear" disabled>Clear selection</button></div></section>
+  <section><h2>PaCMAP and HDBSCAN</h2><div class="plot" id="embedding"></div></section>
   <section><h2>Cluster counts</h2><div class="plot" id="clusters"></div></section>
   <section>
     <div class="plot-heading"><h2>Tag trend</h2><select id="feature" aria-label="Tag to plot"></select></div>

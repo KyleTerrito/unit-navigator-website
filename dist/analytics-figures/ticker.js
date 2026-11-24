@@ -5,7 +5,6 @@
   const viewport = document.getElementById('ticker-window');
   const track = viewport.querySelector('.plots');
   const figures = [...track.querySelectorAll('section')];
-  const controls = document.querySelector('.ticker-controls');
   const playback = document.getElementById('ticker-playback');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const millisecondsPerFigure = 1500;
@@ -75,7 +74,7 @@
   });
   new MutationObserver(schedule).observe(root, {attributes: true, attributeFilter: ['data-visible']});
 
-  controls.hidden = false;
+  playback.hidden = false;
   track.classList.add('ticker-ready');
   render();
   setPlaying(playing);

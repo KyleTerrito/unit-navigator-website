@@ -41,8 +41,6 @@ main { width: min(calc(100% - 2rem), 92rem); margin: 1.5rem auto 3rem; }
 h1 { margin: 0; }
 h2 { font-size: 1.05rem; margin: 0 0 .75rem; }
 p { color: var(--chart-muted); }
-.toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; }
-.toolbar:has(button:disabled) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .plot-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .35rem .65rem; margin-bottom: .4rem; }
 .plot-heading h2 { margin: 0; }
 .plots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
@@ -63,11 +61,18 @@ button:disabled { color: var(--chart-muted); }
   margin: 0;
 }
 [data-view="embedded"] header { display: none; }
-.ticker-controls:not([hidden]) {
+.ticker-controls {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .55rem;
+  font-size: .8rem;
 }
-#ticker-playback {
+[data-view="embedded"] .ticker-controls { margin-bottom: 0; }
+#selection { margin-inline-end: auto; color: var(--chart-muted); }
+#clear:not(:disabled) { cursor: pointer; }
+#ticker-playback:not([hidden]) {
   display: grid;
   place-items: center;
   width: 40px;
@@ -104,7 +109,7 @@ button:disabled { color: var(--chart-muted); }
 }
 [data-view="embedded"] .plots:not(.ticker-ready) > section:not(:first-child) { visibility: hidden; }
 [data-view="embedded"] h2 { margin-bottom: .4rem; font-size: .9rem; }
-[data-view="embedded"] .toolbar, [data-view="embedded"] select { font-size: .8rem; }
+[data-view="embedded"] select { font-size: .8rem; }
 [data-view="embedded"] select { min-width: 0; padding: .2rem .35rem; }
 [data-view="embedded"] .plot { flex: none; height: clamp(150px, 60dvh, 390px); }
 [data-view="embedded"] #shap { flex: none; }

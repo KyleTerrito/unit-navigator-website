@@ -144,7 +144,29 @@ async function tick() {
       await addSamples(end);
     }
     if (plotted < fault.time.length) setTimeout(tick, 65);
-    else if (!reducedMotion.matches) await spinProjection();
+    else if (!reducedMotion.matches) {
+      await spinProjection();
+      setTimeout(restart, 2400);
+    }
+  } catch (error) { fail(error); }
+}
+
+async function restart() {
+  if (reducedMotion.matches) return;
+  if (!inView()) {
+    setTimeout(restart, 250);
+    return;
+  }
+
+  try {
+    await Promise.all([
+      Plotly.update(faultPlot, {x: [[], []], y: [[], []]}, {shapes: scoreLayout().shapes}, [0, 1]),
+      Plotly.restyle(projectionPlot, {
+        x: [[], [], []], y: [[], [], []], z: [[], [], []], customdata: [[], [], []]
+      }, [1, 2, 3])
+    ]);
+    plotted = 0;
+    setTimeout(tick, 650);
   } catch (error) { fail(error); }
 }
 

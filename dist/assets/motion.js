@@ -12,7 +12,30 @@ untypedHeadline.className = 'landing-untyped';
 landingHeadline.setAttribute('aria-label', headlineText);
 landingHeadline.replaceChildren(typedHeadline, untypedHeadline);
 const links = [...document.querySelectorAll('.section-nav a')];
-const track = document.querySelector('.track');
+const track = document.querySelector('.section-nav .track');
+const sectionHeading = document.querySelector('.section-current');
+let headingAnimation;
+let currentSection = -1;
+
+function setSectionProgress(index, progress) {
+  track.style.setProperty('--progress', `${progress * 100}%`);
+  if (currentSection === index) return;
+
+  currentSection = index;
+  const label = links[index].getAttribute('aria-label');
+  if (sectionHeading.textContent !== label) {
+    sectionHeading.textContent = label;
+    headingAnimation?.cancel();
+    if (!reduceMotion.matches) {
+      headingAnimation = sectionHeading.animate([{opacity: .35}, {opacity: 1}], {duration: 180});
+    }
+  }
+  links.forEach((link, position) => {
+    if (position === index) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}
+
 const signal = document.querySelector('.signal');
 const motion = matchMedia('(min-width: 761px) and (min-height: 600px) and (prefers-reduced-motion: no-preference)');
 const mobile = matchMedia('(max-width: 760px)');
@@ -85,19 +108,20 @@ function render() {
       const last = scenes.length - 1;
       const progress = distance ? Math.min(last, Math.max(0, camera.scrollLeft / distance)) : 0;
       current = Math.round(progress);
-      track.style.setProperty('--progress', `${progress / last * 100}%`);
+      setSectionProgress(current, progress / last);
       const { scale: sidewaysScale } = transitionAt(progress % 1, .26);
       scenes.forEach(scene => {
         scene.style.setProperty('--mobile-card-scale', sidewaysScale);
       });
     } else {
-      current = scenes.findLastIndex(scene => scene.getBoundingClientRect().top <= stage.offsetTop + 24);
-      track.style.setProperty('--progress', `${Math.max(0, current) / (scenes.length - 1) * 100}%`);
+      const last = scenes.length - 1;
+      const readingLine = stage.offsetTop + 24;
+      current = Math.max(0, scenes.findLastIndex(scene => scene.getBoundingClientRect().top <= readingLine));
+      const start = scenes[current].getBoundingClientRect().top;
+      const end = scenes[Math.min(last, current + 1)].getBoundingClientRect().top;
+      const travel = end > start ? Math.min(1, Math.max(0, (readingLine - start) / (end - start))) : 0;
+      setSectionProgress(current, (current + travel) / last);
     }
-    links.forEach((link, index) => {
-      if (index === Math.max(0, current)) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
     return;
   }
 
@@ -125,7 +149,7 @@ function render() {
   root.style.setProperty('--landing-copy-opacity', copyOpacity);
   root.style.setProperty('--landing-pulse-progress', pulseProgress);
   root.style.setProperty('--landing-pulse-opacity', pulseOpacity);
-  track.style.setProperty('--progress', `${progress / last * 100}%`);
+  setSectionProgress(active, progress / last);
   root.style.setProperty('--grid-x', `${-progress * 29}px`);
   root.style.setProperty('--grid-y', `${progress * 16}px`);
   root.style.setProperty('--signal-opacity', `${.25 + (1 - scale) * 1.65}`);
@@ -139,8 +163,6 @@ function render() {
       : '';
     scene.inert = index !== active;
     scene.classList.toggle('reading-view', index === active && scale === 1);
-    if (index === active) links[index].setAttribute('aria-current', 'location');
-    else links[index].removeAttribute('aria-current');
   });
 }
 

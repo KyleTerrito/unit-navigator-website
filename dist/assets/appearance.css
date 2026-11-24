@@ -22,10 +22,6 @@
 .appearance-preview-black:after{background:#111113;border-color:#414145}
 .appearance-preview-bayou{background:radial-gradient(ellipse at 15% 10%,#075e9c,transparent 70%),radial-gradient(ellipse at 95% 85%,#258246,transparent 70%),#04131b}
 .appearance-preview-bayou:after{background:#fff;border-color:#a4cbbb}
-.appearance-motion{display:flex;align-items:center;gap:10px;font-size:13px;margin:0}
-.appearance-motion input{margin:0;flex-shrink:0}
-.appearance-note,#appearanceStatus{font-size:12px;line-height:1.65;color:#a4b7c0}
-#appearanceStatus{min-height:20px;margin-bottom:0;color:#8ce3c9}
 #orbitalBackdrop,#blackOrbitBackdrop{display:none}
 .orbital-orb{position:absolute;width:min(75vw,850px);aspect-ratio:1;border-radius:50%;filter:blur(24px);will-change:transform;animation:orbital-drift 48s ease-in-out infinite alternate}
 .orbital-orb-teal{left:-12%;top:-24%;background:radial-gradient(circle,#227b7b66,transparent 66%)}
@@ -102,12 +98,11 @@ html[data-appearance=bayou] #orbitalBackdrop{display:block;position:fixed;inset:
   border-color: var(--line);
 }
 
-.appearance-heading p, .appearance-option small, .appearance-note { color: var(--muted); }
+.appearance-heading p, .appearance-option small { color: var(--muted); }
 .appearance-option { background: var(--field); border-color: var(--line); }
 .appearance-option:has(input:checked) { background: var(--selected); border-color: var(--accent); }
 .appearance-option:has(input:focus-visible) { outline-color: var(--accent); }
-.appearance-option input, .appearance-motion input { accent-color: var(--accent); }
-#appearanceStatus { color: var(--accent); }
+.appearance-option input { accent-color: var(--accent); }
 .appearance-preview-white { background: #f5f7f9; }
 .appearance-preview-white:after { background: #fff; border-color: #ccd5dc; }
 

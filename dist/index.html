@@ -24,14 +24,15 @@
       <span class="brand-mark"><img src="assets/navigator-logo-7.png" alt=""></span>
     </a>
     <nav class="section-nav" aria-label="Sections">
-      <a href="#about">Overview</a>
-      <a href="#connection" aria-label="Data Connection"><span class="nav-full">Data Connection</span><span class="nav-short" aria-hidden="true">Data</span></a>
-      <a href="#workspaces" aria-label="Workspaces"><span class="nav-full">Workspaces</span><span class="nav-short" aria-hidden="true">Spaces</span></a>
-      <a href="#process-knowledge" aria-label="Process Knowledge"><span class="nav-full">Process Knowledge</span><span class="nav-short" aria-hidden="true">Wiki</span></a>
-      <a href="#analytics">Analytics</a>
-      <a href="#monitoring">Monitoring</a>
-      <a href="#screens-dashboards" aria-label="Screens and Dashboards"><span class="nav-full">Screens &amp; Dashboards</span><span class="nav-short" aria-hidden="true">Screens</span></a>
-      <a href="#diagnosis">AI Agents</a>
+      <span class="section-current" aria-hidden="true">Overview</span>
+      <a href="#about" aria-label="Overview" aria-current="location"><span class="section-label" aria-hidden="true">Overview</span></a>
+      <a href="#connection" aria-label="Data Connection"><span class="section-label" aria-hidden="true">Data Connection</span></a>
+      <a href="#workspaces" aria-label="Workspaces"><span class="section-label" aria-hidden="true">Workspaces</span></a>
+      <a href="#process-knowledge" aria-label="Process Knowledge"><span class="section-label" aria-hidden="true">Process Knowledge</span></a>
+      <a href="#analytics" aria-label="Analytics"><span class="section-label" aria-hidden="true">Analytics</span></a>
+      <a href="#monitoring" aria-label="Monitoring"><span class="section-label" aria-hidden="true">Monitoring</span></a>
+      <a href="#screens-dashboards" aria-label="Screens and Dashboards"><span class="section-label" aria-hidden="true">Screens and Dashboards</span></a>
+      <a href="#diagnosis" aria-label="AI Agents"><span class="section-label" aria-hidden="true">AI Agents</span></a>
       <span class="track" aria-hidden="true"></span>
     </nav>
     <div class="header-actions">
@@ -88,7 +89,7 @@
             </figure>
             <div class="landing-copy">
               <h1 id="about-title" tabindex="-1">The next generation of process control</h1>
-              <p class="intro">Capture operating knowledge, uncover insights in live and historical data, and give your team a shared workspace for process screens, dashboards, and monitoring.</p>
+              <p class="intro">Capture operating knowledge, uncover insights in live and historical data, and give your team a shared workspace for process screens, dashboards, and monitoring. Connect AI agents to your unit to ask questions about your process and investigate faults.</p>
             </div>
           </div>
         </div>
@@ -221,14 +222,11 @@
 <dialog id="appearanceDialog" aria-labelledby="appearanceTitle" aria-describedby="appearanceDescription">
 <div class="appearance-heading"><div><h2 id="appearanceTitle">Appearance</h2><p id="appearanceDescription">Choose your workspace backdrop. Changes apply immediately and are saved in this browser.</p></div><button id="appearanceClose" type="button" aria-label="Close appearance" data-ui-action=""><span aria-hidden="true">&times;</span></button></div>
 <fieldset class="appearance-options"><legend>Workspace appearance</legend>
-<label class="appearance-option"><div class="appearance-preview" aria-hidden="true"></div><span><input type="radio" name="appearance" value="classic" checked>Legacy</span><small>The original dark workspace.</small></label>
+<label class="appearance-option"><div class="appearance-preview" aria-hidden="true"></div><span><input type="radio" name="appearance" value="classic">Legacy</span><small>The original dark workspace.</small></label>
 <label class="appearance-option"><div class="appearance-preview appearance-preview-white" aria-hidden="true"></div><span><input type="radio" name="appearance" value="white">Professional</span><small>Bright surfaces, clear contrast, and a clean backdrop.</small></label>
 <label class="appearance-option"><div class="appearance-preview appearance-preview-black" aria-hidden="true"></div><span><input type="radio" name="appearance" value="black-orbit">Orbital</span><small>Deep black with a lively field of white orbs.</small></label>
-<label class="appearance-option"><div class="appearance-preview appearance-preview-bayou" aria-hidden="true"></div><span><input type="radio" name="appearance" value="bayou">Bayou</span><small>Logo-inspired blues, emerald greens, and lime accents.</small></label>
+<label class="appearance-option"><div class="appearance-preview appearance-preview-bayou" aria-hidden="true"></div><span><input type="radio" name="appearance" value="bayou" checked>Bayou</span><small>Logo-inspired blues, emerald greens, and lime accents.</small></label>
 </fieldset>
-<label class="appearance-motion"><input id="appearanceMotion" type="checkbox" checked>Animate the background</label>
-<p class="appearance-note">System reduced-motion preferences are respected. Charts and process canvases keep stable backgrounds.</p>
-<p id="appearanceStatus" role="status" aria-live="polite"></p>
 </dialog>
 </body>
 </html>
